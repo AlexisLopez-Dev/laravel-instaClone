@@ -8,11 +8,15 @@ use App\Http\Controllers\RegisterController;
 // Rutas para la gestión de fotos
 Route::get('/fotos', [FotoController::class, 'index'])->name('fotos.index')->middleware('auth');
 
-Route::get('/fotos/create', [FotoController::class, 'create'])->name('fotos.create');
+Route::get('/fotos/{foto}/edit', [FotoController::class, 'edit'])->name('fotos.edit');
+Route::put('/fotos/{foto}/update', [FotoController::class, 'update'])->name('fotos.update');
 
+Route::get('/fotos/create', [FotoController::class, 'create'])->name('fotos.create');
 Route::post('/fotos/store', [FotoController::class, 'store'])->name('fotos.store');
 
 Route::post('/fotos/{foto}/like', [FotoController::class, 'darLike'])->name('fotos.like');
+
+Route::delete('/fotos/{foto}', [FotoController::class, 'destroy'])->name('fotos.destroy');
 
 
 

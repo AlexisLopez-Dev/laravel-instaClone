@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Foto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class FotoController extends Controller
 {
@@ -68,24 +69,42 @@ class FotoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Foto $foto)
-    {
-        //
+    public function edit($id) {
+        $foto = Foto::find($id);
+        return view('fotos.edit', compact('foto'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Foto $foto)
-    {
-        //
+    public function update(Request $request, Foto $foto) {
+        $request->validate([
+            'foto' => 'required|image',
+        ]);
+
+        // Eliminar la foto anterior del almacenamiento
+        if ($request->hasFile('foto')) {
+            Storage::disk('public')->delete($foto->url);
+        }
+
+        // Guardar la nueva foto
+        $path = $request->file('foto')->store('fotos', 'public');
+        $foto->url = $path;
+        $foto->user_id = Auth::id();
+
+        $foto->save();
+
+        return redirect()->route('fotos.index')->with('success', 'Foto actualizada exitosamente.');
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Foto $foto)
-    {
-        //
+    public function destroy(Foto $foto) {
+        Storage::disk('public')->delete($foto->url);
+        $foto->delete();
+
+        return redirect()->route('fotos.index')->with('success', 'Foto eliminada exitosamente.');
     }
 }
