@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Foto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FotoController extends Controller
 {
@@ -36,11 +37,24 @@ class FotoController extends Controller
         $foto = new Foto();
         $foto->url = $path;
 
-        $foto->user_id = 1;
+        $foto->user_id = Auth::id();
 
         $foto->save();
 
         return redirect()->route('fotos.index')->with('success', 'Foto subida exitosamente.');
+    }
+
+    public function darLike(Foto $foto) {
+        // 1. Obtenemos al usuario que está logueado ahora mismo
+        $usuario = Auth::user();
+
+        // 2. Magia de Laravel: Usamos toggle en la relación likes()
+        // Si no le había dado like, se lo da (añade fila en pivote).
+        // Si ya le había dado, se lo quita (borra fila en pivote).
+        $usuario->likes()->toggle($foto->id);
+
+        // 3. Volvemos a la página anterior
+        return back();
     }
 
     /**
