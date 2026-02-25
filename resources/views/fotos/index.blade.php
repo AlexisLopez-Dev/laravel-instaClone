@@ -7,7 +7,9 @@
 
 @foreach($fotos as $foto)
     <p>ID de la foto: {{ $foto->id }}</p>
-    <img src="{{Storage::url($foto->url)}}" width="400px">
+    <a href="{{route('fotos.show', $foto)}}">
+        <img src="{{Storage::url($foto->url)}}" width="400px">
+    </a>
 
     <a href="{{route('fotos.edit', $foto->id)}}">Editar</a>
 

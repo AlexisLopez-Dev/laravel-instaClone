@@ -61,9 +61,8 @@ class FotoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Foto $foto)
-    {
-        //
+    public function show(Foto $foto) {
+        return view('fotos.show', compact('foto'));
     }
 
     /**

@@ -18,6 +18,8 @@ Route::post('/fotos/{foto}/like', [FotoController::class, 'darLike'])->name('fot
 
 Route::delete('/fotos/{foto}', [FotoController::class, 'destroy'])->name('fotos.destroy');
 
+Route::get('/fotos/{foto}', [FotoController::class, 'show'])->name('fotos.show');
+
 
 
 
