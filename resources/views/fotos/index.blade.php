@@ -1,33 +1,43 @@
-<form action="{{route('logout')}}" method="POST">
-    @csrf
-    <button type="submit">Cerrar sesión</button>
-</form>
+@extends('layout')
+@section('content')
 
-<a href="{{route('fotos.create')}}">Subir foto</a>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-@foreach($fotos as $foto)
-    <p>ID de la foto: {{ $foto->id }}</p>
-    <a href="{{route('fotos.show', $foto)}}">
-        <img src="{{Storage::url($foto->url)}}" width="400px">
-    </a>
+        @foreach($fotos as $foto)
+            <article class="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm flex flex-col hover:shadow-md transition">
 
-    <a href="{{route('fotos.edit', $foto->id)}}">Editar</a>
+                <div class="p-3 flex justify-between items-center border-b border-gray-100">
+                    <span class="font-semibold text-sm truncate">{{ $foto->user->name }}</span>
+                </div>
 
-    <form action="{{route('fotos.destroy', $foto)}}" method="POST">
-        @csrf @method('DELETE')
-        <button type="submit">Borrar</button>
-    </form>
+                <a href="{{ route('fotos.show', $foto) }}" class="block bg-gray-100 aspect-square group relative">
+                    <img src="{{ Storage::url($foto->url) }}" alt="Foto" class="w-full h-full object-cover group-hover:opacity-90 transition">
+                </a>
 
-    <form action="{{route('fotos.like', $foto)}}" method="POST">
-        @csrf
-        <button type="submit">Dar like</button>
-    </form>
+                <div class="p-3 mt-auto flex justify-between items-center bg-gray-50">
+                    <form action="{{ route('fotos.like', $foto) }}" method="POST" class="m-0">
+                        @csrf
+                        <button type="submit" class="text-red-500 hover:text-red-600 font-bold flex items-center gap-1 text-sm">
+                            ❤️ {{ $foto->likesRecibidos->count() }}
+                        </button>
+                    </form>
 
-    <p>Likes: {{ $foto->likesRecibidos->count() }} </p>
+                    <div class="flex space-x-3 text-xs font-semibold">
+                        @can('update', $foto)
+                            <a href="{{ route('fotos.edit', $foto->id) }}" class="text-gray-500 hover:text-blue-600">Editar</a>
+                        @endcan
+                        @can('delete', $foto)
+                            <form action="{{ route('fotos.destroy', $foto) }}" method="POST" class="m-0">
+                                @csrf @method('DELETE')
+                                <button type="submit" class="text-gray-500 hover:text-red-600">Borrar</button>
+                            </form>
+                        @endcan
+                    </div>
+                </div>
 
+            </article>
+        @endforeach
 
+    </div>
 
-    <hr>
-@endforeach
-
-
+@endsection
