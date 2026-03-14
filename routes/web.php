@@ -37,5 +37,8 @@ Route::post('/login', [SessionController::class, 'authenticate'])->name('login.p
 // --- RUTA DE LOGOUT ---
 Route::post('/logout', [SessionController::class, 'logout'])->name('logout');
 
-// todo: Si se escribe cualquier otra ruta, redirije al index
 
+
+Route::fallback(function () {
+    return redirect()->route('fotos.index');
+});

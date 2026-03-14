@@ -10,11 +10,10 @@ use Illuminate\Support\Facades\Storage;
 class FotoController extends Controller {
 
     public function index() {
-        $fotos = Foto::all();
+        $fotos = Foto::with('user')->withCount('likesRecibidos')->latest()->simplePaginate(9);
 
         return view('fotos.index', compact('fotos'));
     }
-
 
     public function create() {
         return view('fotos.create');
@@ -46,6 +45,8 @@ class FotoController extends Controller {
     }
 
     public function show(Foto $foto) {
+        $foto->load('user')->loadCount('likesRecibidos');
+
         return view('fotos.show', compact('foto'));
     }
 
