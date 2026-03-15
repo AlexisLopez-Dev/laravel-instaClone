@@ -179,8 +179,11 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'foto' => [
+            'required' => '¡No puedes dejar el post vacío! Sube una foto.',
+            'image'    => 'El archivo debe ser una imagen real.',
+            'mimes'    => 'Solo aceptamos formatos: jpeg, png, jpg o webp.',
+            'max'      => 'La imagen es demasiado pesada. El límite son 2MB.',
         ],
     ],
 
