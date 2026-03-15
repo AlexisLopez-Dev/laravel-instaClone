@@ -12,7 +12,7 @@
                     <span class="text-xs text-gray-400">{{ $foto->created_at->diffForHumans() }}</span>
                 </div>
 
-                <a href="{{ route('fotos.show', $foto) }}" class="block bg-gray-100 aspect-square group relative">
+                <a href="{{ route('fotos.show', $foto) }}" class="block bg-gray-100 aspect-square group relative overflow-hidden">
                     <img src="{{ Storage::url($foto->url) }}" alt="Foto" class="w-full h-full object-cover group-hover:opacity-90 transition">
                 </a>
 

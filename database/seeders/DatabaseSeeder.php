@@ -28,26 +28,37 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('invitado1234'),
         ]);
 
+        User::factory(15)->create();
+
+        $totalFotos = count($fotosMuestra);
+
         foreach ($fotosMuestra as $index => $fotoOriginal) {
 
             $extension = pathinfo($fotoOriginal, PATHINFO_EXTENSION);
             $nuevoNombre = 'fotos/img_' . str_pad($index + 1, 2, '0', STR_PAD_LEFT) . '.' . $extension;
             Storage::disk('public')->copy($fotoOriginal, $nuevoNombre);
 
-            if ($index === 0) {
-                $usuarioDueño = $demoUser;
+            if ($index === $totalFotos - 1) {
+                $usuarioDueno = $demoUser;
             } else {
-                $usuarioDueño = User::factory()->create();
+                $usuarioDueno = User::factory()->create();
             }
 
-            $foto = Foto::create([
-                'user_id' => $usuarioDueño->id,
-                'url' => $nuevoNombre,
-            ]);
+            $foto = new Foto();
+            $foto->user_id = $usuarioDueno->id;
+            $foto->url = $nuevoNombre;
+            $foto->created_at = now()->subMinutes($totalFotos - $index);
+            $foto->save();
 
-            if ($usuarioDueño->id !== $demoUser->id && rand(0, 1) === 1) {
-                $demoUser->likes()->attach($foto->id);
+            $cantidadLikes = rand(5, 15);
+            $usuariosLikers = User::inRandomOrder()->limit($cantidadLikes)->get();
+
+            foreach ($usuariosLikers as $liker) {
+                if ($liker->id !== $usuarioDueno->id) {
+                    $liker->likes()->attach($foto->id);
+                }
             }
         }
+
     }
 }
