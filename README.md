@@ -2,6 +2,29 @@
 
 Un clon minimalista y funcional de una red social de fotografías. Este proyecto ha sido desarrollado con el objetivo principal de poner en práctica y dominar características clave del backend con Laravel, enfocándose en la arquitectura de datos y la seguridad.
 
+## Capturas del Proyecto
+
+<div align="center">
+  <img src="./capturas/index.png" width="800" alt="Feed principal de InstaClone">
+  <p><em>Feed fotográfico principal</em></p>
+</div>
+
+<div align="center">
+  <img src="./capturas/detalle.png" width="800" alt="Vista detalle y sistema de likes">
+  <p><em>Vista de detalle e interacción en tiempo real</em></p>
+</div>
+
+<div align="center">
+  <img src="./capturas/editar.png" width="800" alt="Panel de edición">
+  <p><em>Panel de edición de una publicación</em></p>
+</div>
+
+<div align="center">
+  <img src="./capturas/login.png" width="400" alt="Pantalla de Login">
+  <img src="./capturas/registro.png" width="400" alt="Pantalla de Registro">
+  <p><em>Pantallas seguras de acceso y registro de usuarios</em></p>
+</div>
+
 ## Enfoque Técnico del Proyecto
 
 * **Relaciones de modelos con Eloquent:** Implementación de relaciones `HasMany` / `BelongsTo` (Usuarios y Fotos) y relaciones complejas `BelongsToMany` (Sistema de "Likes" entre Usuarios y Fotos).
