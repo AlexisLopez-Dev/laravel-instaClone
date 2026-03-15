@@ -8,6 +8,8 @@
 
                 <div class="p-3 flex justify-between items-center border-b border-gray-100">
                     <span class="font-semibold text-sm truncate">{{ $foto->user->name }}</span>
+
+                    <span class="text-xs text-gray-400">{{ $foto->created_at->diffForHumans() }}</span>
                 </div>
 
                 <a href="{{ route('fotos.show', $foto) }}" class="block bg-gray-100 aspect-square group relative">

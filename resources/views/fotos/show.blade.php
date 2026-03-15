@@ -10,7 +10,13 @@
     <article class="max-w-3xl mx-auto bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md">
 
         <div class="p-5 flex justify-between items-center border-b border-gray-100">
-            <span class="font-bold text-gray-900 text-lg">{{ $foto->user->name }}</span>
+
+            <div class="flex flex-col">
+                <span class="font-bold text-gray-900 text-lg">{{ $foto->user->name }}</span>
+
+                <span class="text-xs text-gray-500">{{ $foto->created_at->diffForHumans() }}</span>
+            </div>
+
             <span class="text-sm text-gray-400 font-mono">ID: {{ $foto->id }}</span>
         </div>
 
