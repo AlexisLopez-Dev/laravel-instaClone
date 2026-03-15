@@ -22,7 +22,7 @@ class FotoController extends Controller {
 
     public function store(Request $request) {
         $request->validate([
-            'foto' => 'required|image',
+            'foto' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048'
         ]);
 
         $path = $request->file('foto')->store('fotos', 'public');
@@ -57,7 +57,7 @@ class FotoController extends Controller {
 
     public function update(Request $request, Foto $foto) {
         $request->validate([
-            'foto' => 'required|image',
+            'foto' => 'required|image|mimes:jpeg,png,jpg,webp|max:2048'
         ]);
 
         if ($request->hasFile('foto')) {
@@ -66,7 +66,6 @@ class FotoController extends Controller {
 
         $path = $request->file('foto')->store('fotos', 'public');
         $foto->url = $path;
-        $foto->user_id = Auth::id();
 
         $foto->save();
 

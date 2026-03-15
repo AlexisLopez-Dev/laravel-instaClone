@@ -31,7 +31,7 @@
                         @can('delete', $foto)
                             <form action="{{ route('fotos.destroy', $foto) }}" method="POST" class="m-0">
                                 @csrf @method('DELETE')
-                                <button type=\"submit\" class="text-gray-500 hover:text-red-600">Borrar</button>
+                                <button type="submit" class="text-gray-500 hover:text-red-600">Borrar</button>
                             </form>
                         @endcan
                     </div>

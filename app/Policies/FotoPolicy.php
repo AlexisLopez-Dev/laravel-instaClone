@@ -36,7 +36,7 @@ class FotoPolicy
      * Determine whether the user can update the model.
      */
     public function update(User $user, Foto $foto): bool {
-        return $user->id === $foto->user_id;
+        return $user->id == $foto->user_id;
     }
 
     /**
@@ -44,7 +44,7 @@ class FotoPolicy
      */
     public function delete(User $user, Foto $foto): bool
     {
-        return $user->id === $foto->user_id;
+        return $user->id == $foto->user_id;
     }
 
     /**
