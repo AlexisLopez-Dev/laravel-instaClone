@@ -5,23 +5,31 @@ Un clon minimalista y funcional de una red social de fotografías. Este proyecto
 ## Capturas del Proyecto
 
 <div align="center">
-  <img src="./capturas/index.png" width="800" alt="Feed principal de InstaClone">
+  <img src="./capturas/index.png" alt="Feed principal de InstaClone">
   <p><em>Feed fotográfico principal</em></p>
 </div>
 
 <div align="center">
-  <img src="./capturas/detalle.png" width="800" alt="Vista detalle y sistema de likes">
+  <img src="./capturas/detalle.png" alt="Vista detalle y sistema de likes">
   <p><em>Vista de detalle e interacción en tiempo real</em></p>
 </div>
 
 <div align="center">
-  <img src="./capturas/editar.png" width="800" alt="Panel de edición">
+  <img src="./capturas/editar.png" alt="Panel de edición">
   <p><em>Panel de edición de una publicación</em></p>
 </div>
 
 <div align="center">
-  <img src="./capturas/login.png" width="400" alt="Pantalla de Login">
-  <img src="./capturas/registro.png" width="400" alt="Pantalla de Registro">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="./capturas/login.png" height="380" alt="Pantalla de Login">
+      </td>
+      <td align="center">
+        <img src="./capturas/registro.png" height="380" alt="Pantalla de Registro">
+      </td>
+    </tr>
+  </table>
   <p><em>Pantallas seguras de acceso y registro de usuarios</em></p>
 </div>
 
