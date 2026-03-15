@@ -41,3 +41,14 @@ Un clon minimalista y funcional de una red social de fotografías. Este proyecto
 * **Base de datos:** MySQL
 * **Frontend:** Blade Templates y Tailwind CSS
 * **Despliegue:** Servidor propio (Plesk) con despliegue continuo vía GitHub.
+
+## Demo en Vivo y Acceso Público
+
+**Enlace al proyecto:** [https://instaclone.alexislopez.iesf3.es](https://instaclone.alexislopez.iesf3.es)
+
+Puedes probar la aplicación web directamente sin necesidad de registrarte utilizando el usuario de prueba:
+
+- **Email:** `invitado@gmail.com`
+- **Contraseña:** `invitado1234`
+
+> ⚠️ **Aviso de Mantenimiento:** Para garantizar la integridad del portafolio y evitar contenido inapropiado, este proyecto tiene configurado un *Cron Job* en el servidor. La base de datos y el almacenamiento de imágenes se formatean y restauran a su estado inicial de forma automática **todos los días a las 04:00 AM**.
