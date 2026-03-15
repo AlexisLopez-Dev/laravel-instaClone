@@ -12,8 +12,11 @@
                     <span class="text-xs text-gray-400">{{ $foto->created_at->diffForHumans() }}</span>
                 </div>
 
-                <a href="{{ route('fotos.show', $foto) }}" class="block bg-gray-100 aspect-square group relative overflow-hidden">
-                    <img src="{{ Storage::url($foto->url) }}" alt="Foto" class="w-full h-full object-cover group-hover:opacity-90 transition">
+                <a href="{{ route('fotos.show', $foto) }}" class="block bg-gray-200 animate-pulse aspect-square group relative overflow-hidden">
+                    <img src="{{ Storage::url($foto->url) }}"
+                         alt="Foto"
+                         class="w-full h-full object-cover opacity-0 transition-opacity duration-500 group-hover:opacity-90"
+                         onload="this.classList.remove('opacity-0'); this.parentElement.classList.remove('animate-pulse');">
                 </a>
 
                 <div class="p-3 mt-auto flex justify-between items-center bg-gray-50">
