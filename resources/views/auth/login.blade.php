@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="bg-white border border-gray-200 rounded-lg p-8 shadow-sm max-w-sm mx-auto mt-12">
-        <h2 class="text-3xl font-bold mb-6 text-center text-gray-900">Mini Instagram</h2>
+        <h2 class="text-3xl font-bold mb-6 text-center text-gray-900">Iniciar sesión</h2>
 
         <form action="{{ route('login.post') }}" method="POST" class="flex flex-col gap-4">
             @csrf
